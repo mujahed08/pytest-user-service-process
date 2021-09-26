@@ -21,6 +21,11 @@ def test_signup():
         "enabled": True
     }
     logger.info(user)
-    response = requests.post("http://127.0.0.1:8002/signup", data=json.dumps(user))
+    response = requests.post("http://127.0.0.1:7001/signup", data=json.dumps(user))
+    logger.info(response.json())
+    assert response.status_code == 200
+
+def test_deactivate():
+    response = requests.get("http://127.0.0.1:7001/deactivate/13")
     logger.info(response.json())
     assert response.status_code == 200
